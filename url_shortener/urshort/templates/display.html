@@ -1,23 +1,97 @@
-{% extends "base.html" %}
-{% block start %}
-<table class="table">
+{% extends "base.html" %} {% block start %}
+<style>
+  /* Table Container */
+  .table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* Table Header */
+  th {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Table Data (td) */
+  td {
+    padding: 12px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: 500;
+    word-break: break-word;
+  }
+
+  /* Ensure URLs don’t overflow */
+  td a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  td a:hover {
+    text-decoration: underline;
+  }
+
+  /* Alternate Row Background */
+  tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Hover Effect */
+  tr:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transition: 0.3s ease-in-out;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    th,
+    td {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+
+    td {
+      display: block;
+      text-align: left;
+      padding: 8px;
+    }
+  }
+</style>
+<div class="table-container">
+  <table class="table">
     <thead>
       <tr>
-        <th scope="col">Sr. No.</th>
-        <th scope="col">Original url</th>
-        <th scope="col">Short Url</th>
-        
+        <th>ID</th>
+        <th>Short URL</th>
+        <th>Original URL</th>
       </tr>
     </thead>
     <tbody>
-        {% for url in url %}
+      {% for url in url %}
       <tr>
         <th scope="row">{{forloop.counter}}</th>
         <td>{{url.long_url}}</td>
         <td>{{url.short_code}}</td>
-        
       </tr>
-     {% endfor %}
+      {% endfor %}
     </tbody>
   </table>
-    {% endblock  %}
+</div>
+
+{% endblock %}
